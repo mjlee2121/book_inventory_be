@@ -24,3 +24,10 @@ def get_book(book_id: int):
         if book["id"] == book_id:
             return book
     raise HTTPException(status_code=404, detail="Book not found")
+
+@router.delete('/books/{book_id}')
+def delete_book(book_id:int):
+    for book in books_db:
+        if book["id"]==book_id:
+            books_db.remove(book)
+      
